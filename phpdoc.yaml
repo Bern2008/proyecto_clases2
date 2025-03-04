@@ -1,0 +1,17 @@
+phpdocumentor:
+  title: "Documentación del Proyecto"
+  files:
+  
+  	 file:
+  	 	- "config.php"
+    directories:
+      - "clases"
+    ignore:
+      - "vendor"
+  logging:
+    level: "info"
+  transformations:
+    templates:
+      - "default"
+  paths:
+    output: "docs"
