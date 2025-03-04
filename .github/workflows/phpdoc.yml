@@ -1,0 +1,32 @@
+name: Generar Documentación con PHPDocumentor
+
+on:
+  push:
+    branches:
+      - main  # Cambia 'main' por la rama en la que quieres que se ejecute
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Clonar el repositorio
+        uses: actions/checkout@v3
+
+      - name: Configurar PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.4'  # Usa la versión de PHP que necesites
+          tools: composer
+
+      - name: Instalar dependencias
+        run: composer install --no-interaction --prefer-dist
+
+      - name: Generar documentación con PHPDocumentor
+        run: php vendor/bin/phpdoc -d clases -t docs
+
+      - name: Subir documentación generada
+        uses: actions/upload-artifact@v3
+        with:
+          name: Documentación
+          path: docs
