@@ -3,7 +3,7 @@ name: Generar Documentación con PHPDocumentor
 on:
   push:
     branches:
-      - main  # Cambia 'main' por la rama en la que quieres que se ejecute
+      - master  # Cambia 'main' por la rama en la que quieres que se ejecute
 
 jobs:
   build:
