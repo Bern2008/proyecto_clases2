@@ -26,7 +26,7 @@ jobs:
         run: php vendor/bin/phpdoc -d clases -t docs
 
       - name: Subir documentación generada
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: Documentación
           path: docs
