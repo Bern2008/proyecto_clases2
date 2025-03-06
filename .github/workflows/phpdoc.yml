@@ -25,8 +25,18 @@ jobs:
       - name: Generar documentación con PHPDocumentor
         run: php vendor/bin/phpdoc -d clases -t docs
 
-      - name: Subir documentación generada
-        uses: actions/upload-artifact@v4
+     # --- Se ha eliminado este paso porque solo guardaba la documentación como un artefacto comprimido ---
+     #- name: Subir documentación generada
+     #   uses: actions/upload-artifact@v4
+     #   with:
+     #     name: Documentación
+     #     path: docs
+     # ----------------------------------------------------------------------------------------------
+
+      # Nuevo paso: Publicar la documentación en GitHub Pages
+      - name: Publicar en GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          name: Documentación
-          path: docs
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./docs
+          publish_branch: gh-pages  # Publica en la rama 'gh-pages'
